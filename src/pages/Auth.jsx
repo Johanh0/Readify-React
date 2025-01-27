@@ -1,10 +1,104 @@
 // Import React Functionalities
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Context } from "../App";
+import { setLocalStorage } from "../utils/localStorage";
 // Import Components
 import Main from "../components/Main";
+
 const Auth = () => {
+  const navigate = useNavigate();
+  const { signedIn, setSignedIn, user, setUser } = useContext(Context);
+
+  useEffect(() => {
+    if (signedIn) {
+      navigate("/profile");
+    }
+  }, []);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [signIn, setSignIn] = useState(true);
+
+  const handleFirstName = (value) => {
+    setFirstName(value);
+  };
+
+  const handleLastName = (value) => {
+    setLastName(value);
+  };
+
+  const handleEmail = (value) => {
+    setEmail(value);
+  };
+
+  const handlePassword = (value) => {
+    setPassword(value);
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:3000/api/v1/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+        mode: "cors",
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Error trying to login");
+      }
+
+      const data = await response.json();
+      console.log(data);
+      setSignedIn(true);
+      setLocalStorage("signedIn", true);
+
+      setUser(data);
+      setLocalStorage("user", data);
+      navigate("/profile");
+    } catch {}
+  };
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:3000/api/v1/user/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ firstName, lastName, email, password }),
+        mode: "cors",
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Error trying to create account");
+      }
+
+      const data = await response.json();
+      console.log(data);
+      setSignedIn(true);
+      setLocalStorage("signedIn", true);
+
+      setUser(data);
+      setLocalStorage("user", data);
+      navigate("/catalog");
+    } catch {}
+  };
+
   return (
     <Main>
       <section className="flex w-full h-screen absolute top-0 left-0 justify-center items-center">
@@ -29,6 +123,8 @@ const Auth = () => {
                   type="text"
                   placeholder="Enter email"
                   className=" w-full py-2 px-2 bg-gray-100 rounded-sm border border-gray-300 outline-none"
+                  onChange={(e) => handleEmail(e.target.value)}
+                  required
                 />
               </div>
               <div className="flex flex-col gap-2 w-full">
@@ -40,9 +136,11 @@ const Auth = () => {
                 </label>
                 <input
                   id="login-password"
-                  type="text"
+                  type="password"
                   placeholder="Enter password"
                   className=" w-full py-2 px-2 bg-gray-100 rounded-sm border border-gray-300 outline-none"
+                  onChange={(e) => handlePassword(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -61,6 +159,8 @@ const Auth = () => {
                     type="text"
                     placeholder="First Name"
                     className=" w-full py-2 px-2 bg-gray-100 rounded-sm border border-gray-300 outline-none"
+                    onChange={(e) => handleFirstName(e.target.value)}
+                    required
                   />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -75,6 +175,8 @@ const Auth = () => {
                     type="text"
                     placeholder="Last Name"
                     className=" w-full py-2 px-2 bg-gray-100 rounded-sm border border-gray-300 outline-none"
+                    onChange={(e) => handleLastName(e.target.value)}
+                    required
                   />
                 </div>
               </div>
@@ -90,6 +192,8 @@ const Auth = () => {
                   type="text"
                   placeholder="Enter email"
                   className=" w-full py-2 px-2 bg-gray-100 rounded-sm border border-gray-300 outline-none"
+                  onChange={(e) => handleEmail(e.target.value)}
+                  required
                 />
               </div>
               <div className="flex flex-col gap-2 w-full">
@@ -101,9 +205,11 @@ const Auth = () => {
                 </label>
                 <input
                   id="signup-password"
-                  type="text"
+                  type="password"
                   placeholder="Enter password"
                   className=" w-full py-2 px-2 bg-gray-100 rounded-sm border border-gray-300 outline-none"
+                  onChange={(e) => handlePassword(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -119,7 +225,12 @@ const Auth = () => {
               </p>
             </div>
             <div>
-              <button className=" w-full bg-black p-3 text-white font-bold rounded-sm cursor-pointer">
+              <button
+                className=" w-full bg-black p-3 text-white font-bold rounded-sm cursor-pointer"
+                onClick={
+                  signIn ? (e) => handleLogin(e) : (e) => handleSignup(e)
+                }
+              >
                 {signIn ? "Sign In" : "Create account"}
               </button>
             </div>

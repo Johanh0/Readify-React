@@ -4,10 +4,22 @@ import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
 
 const Catalog = () => {
+  const emptyData = ["", "", "", "", "", "", "", "", "", "", "", ""];
+
   return (
     <>
       <Header />
-      <Main></Main>
+      <Main>
+        <section className="grid grid-cols-4 gap-x-25 gap-y-20">
+          {emptyData.map((ebook, index) => (
+            <ProductCard
+              key={index}
+              title="The Psychology of Money"
+              author="Morgan Housel "
+            />
+          ))}
+        </section>
+      </Main>
       <Footer />
     </>
   );

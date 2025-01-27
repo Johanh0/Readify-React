@@ -1,3 +1,5 @@
+// Import
+import { Link } from "react-router-dom";
 // Import Components
 import ProductCard from "./ProductCard";
 // Import Swiper React components
@@ -7,9 +9,8 @@ import "swiper/css";
 import "swiper/css/effect-creative";
 // import required modules
 import { EffectCreative } from "swiper/modules";
-const ProductSlider = () => {
+const ProductSlider = ({ data }) => {
   // Empty data to simulate products from the database
-  const emptyData = ["", "", "", "", "", "", "", "", "", "", "", ""];
   return (
     <Swiper
       grabCursor={true}
@@ -27,12 +28,16 @@ const ProductSlider = () => {
       modules={[EffectCreative]}
       className=" w-70 h-fit"
     >
-      {emptyData.map((ebook, index) => (
-        <SwiperSlide key={index}>
-          <ProductCard
-            title="The Psychology of Money"
-            author="Morgan Housel "
-          />
+      {data.map((ebook) => (
+        <SwiperSlide key={ebook.ebook_id}>
+          <Link to={`/product/${ebook.ebook_id}`}>
+            <ProductCard
+              imgPath={ebook.cover_image_url}
+              key={ebook.ebook_id}
+              title={ebook.title}
+              author={ebook.author}
+            />
+          </Link>
         </SwiperSlide>
       ))}
     </Swiper>

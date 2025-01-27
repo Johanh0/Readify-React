@@ -3,7 +3,7 @@ import path from "path";
 import dotenv from "dotenv";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
-dotenv.config({ path: path.resolve(__dirname, "../.env") });
+dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 
 // Pool of connections
 const pool = mysql.createPool({

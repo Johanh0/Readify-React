@@ -10,10 +10,10 @@ userRouter.get("/profile", authenticateToken, (req, res) => {
 });
 
 userRouter.post("/signup", async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { first_name, last_name, email, password } = req.body;
 
   //   Validate if the user data is complete
-  if (!firstName || !lastName || !email || !password) {
+  if (!first_name || !last_name || !email || !password) {
     return res.status(400).json({
       error: "All fields are required",
     });
@@ -26,8 +26,8 @@ userRouter.post("/signup", async (req, res) => {
 
     // Try to insert new usert to the database
     const query =
-      "INSERT INTO users (firstName, lastName, email, password) VALUES (?, ?, ?, ?)";
-    const values = [firstName, lastName, email, hashedPassword];
+      "INSERT INTO users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)";
+    const values = [first_name, last_name, email, hashedPassword];
 
     const [results] = await promisePool.execute(query, values);
 
@@ -80,11 +80,10 @@ userRouter.post("/login", async (req, res) => {
       .status(200)
       .json({
         message: "Login successful",
-        firstName: user[0].firstName,
-        lastName: user[0].lastName,
+        first_name: user[0].first_name,
+        last_name: user[0].last_name,
         email: user[0].email,
         profile_image_url: user[0].profile_image_url,
-        token,
       });
   } catch (error) {
     console.error("Error trying to login:", error);

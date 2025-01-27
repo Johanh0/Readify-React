@@ -8,7 +8,7 @@ import Search from "./Search";
 import SimpleButton from "./buttons/SimpleButton";
 
 const Header = () => {
-  const { signedIn } = useContext(Context);
+  const { signedIn, user } = useContext(Context);
 
   const [menu, setMenu] = useState(false);
   return (
@@ -27,13 +27,15 @@ const Header = () => {
             <div className="flex gap-3 items-center cursor-pointer">
               <div>
                 <img
-                  src=""
-                  alt=""
-                  className=" w-[30px] h-[30px] bg-red-300 rounded-full"
+                  src={`http://localhost:3000/profile-img/${user?.profile_image_url}`}
+                  alt={`${user?.first_name} ${user?.last_name} profile picture`}
+                  className=" w-[30px] h-[30px] rounded-full"
                 />
               </div>
               <div>
-                <p className=" text-sm font-bold">Johan Herrera</p>
+                <Link to="/profile" className=" text-sm">
+                  {user?.first_name} {user?.last_name}
+                </Link>
               </div>
             </div>
           ) : (

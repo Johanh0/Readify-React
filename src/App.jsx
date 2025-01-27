@@ -5,13 +5,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Catalog from "./pages/Catalog";
 import Auth from "./pages/Auth";
+import Profile from "./pages/Profile";
+import Product from "./pages/Product";
 
 export const Context = createContext();
 
 function App() {
-  const [darkMode, setDarkMode] = useState(() => {
-    return JSON.parse(localStorage.getItem("darkMode")) || false;
-  });
   const [signedIn, setSignedIn] = useState(() => {
     return JSON.parse(localStorage.getItem("signedIn")) || false;
   });
@@ -19,14 +18,14 @@ function App() {
     return JSON.parse(localStorage.getItem("user")) || null;
   });
   return (
-    <Context.Provider
-      value={{ darkMode, setDarkMode, signedIn, setSignedIn, user, setUser }}
-    >
+    <Context.Provider value={{ signedIn, setSignedIn, user, setUser }}>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/product/:id" element={<Product />} />
         </Routes>
       </Router>
     </Context.Provider>
