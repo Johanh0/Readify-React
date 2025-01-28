@@ -11,7 +11,7 @@ const ProductCard = ({ imgPath, title, author }) => {
           loading="lazy"
         />
       </div>
-      <div className="text-center">
+      <div className="text-center flex flex-col justify-center items-center">
         <h6 className=" text-xl font-bold max-w-xs truncate">{title}</h6>
         <p className=" text-gray-400">{author}</p>
       </div>

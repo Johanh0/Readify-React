@@ -15,7 +15,7 @@ const Catalog = () => {
     <>
       <Header />
       <Main>
-        <section className="grid grid-cols-4 gap-x-25 gap-y-20 min-h-[400px] h-fit">
+        <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-25">
           {searchResult?.map((ebook) => (
             <Link key={ebook.ebook_id} to={`/product/${ebook.ebook_id}`}>
               <ProductCard

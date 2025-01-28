@@ -24,26 +24,25 @@ const Search = () => {
     }
 
     try {
-      const searchEbooks = await searchQuery(
-        `search/${category}/${inputQuery}`
-      );
+      let searchEbooks;
+
+      if (inputQuery == "" || inputQuery == " ") {
+        searchEbooks = await searchQuery(`search/${category}`);
+      } else {
+        searchEbooks = await searchQuery(`search/${category}/${inputQuery}`);
+      }
       setSearchResult(searchEbooks);
-      console.log(searchEbooks);
     } catch (error) {
       console.error("Error during search:", error);
       setSearchResult([]);
     }
   };
 
-  // useEffect(() => {
-  //   console.log(urlPath);
-  // }, []);
-
   return (
     <form
       onSubmit={(e) => hanldeSearch(e)}
       action=""
-      className="flex justify-center items-center gap-1 bg-gray-100 py-3 px-5 rounded-md"
+      className="flex justify-center items-center gap-1 bg-gray-100 py-3 px-5 rounded-md w-full"
     >
       <div>
         <select
@@ -80,10 +79,10 @@ const Search = () => {
           onInput={(e) => setInputQuery(e.target.value)}
         />
       </div>
-      <div>
+      <div className="hidden md:block">
         <label htmlFor="search">
           <img
-            className="w-5 cursor-pointer"
+            className="cursor-pointer w-5"
             src={searchIcon}
             alt="Search icon"
           />

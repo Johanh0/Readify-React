@@ -56,6 +56,33 @@ ebookRouter.get("/:id", async (req, res) => {
   }
 });
 
+ebookRouter.get("/search/:category", async (req, res) => {
+  const { category } = req.params;
+
+  if (!category) {
+    return res.status(400).json({
+      error: "Category is required",
+    });
+  }
+
+  try {
+    const query = `SELECT * FROM ebooks WHERE category = ?
+`;
+    const [results] = await promisePool.execute(query, [category]);
+
+    if (!results) {
+      return res.status(404).json({ message: "eBooks not found" });
+    }
+
+    res.status(200).json({
+      results,
+    });
+  } catch (error) {
+    console.error("Error trying to access ebook:", error);
+    res.status(500).json({ error: "Error accessing ebook" });
+  }
+});
+
 ebookRouter.get("/search/:category/:search", async (req, res) => {
   const { category, search } = req.params;
 

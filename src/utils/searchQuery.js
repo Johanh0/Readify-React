@@ -13,7 +13,6 @@ export async function searchQuery(query) {
       console.error("No results found.");
       return { error: "No results found" };
     }
-    console.log(data.results);
     return data.results;
   } catch (error) {
     console.error("Error occurred while fetching data:", error);

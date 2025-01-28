@@ -79,14 +79,15 @@ const Auth = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-
+    const first_name = firstName;
+    const last_name = lastName;
     try {
       const response = await fetch("http://localhost:3000/api/v1/user/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ firstName, lastName, email, password }),
+        body: JSON.stringify({ first_name, last_name, email, password }),
         mode: "cors",
         credentials: "include",
       });
@@ -97,7 +98,6 @@ const Auth = () => {
       }
 
       const data = await response.json();
-      console.log(data);
       setSignedIn(true);
       setLocalStorage("signedIn", true);
 

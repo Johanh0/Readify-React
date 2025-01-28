@@ -37,7 +37,7 @@ const Contact = () => {
       <Main>
         <section className="flex justify-center items-center flex-col gap-10">
           <div>
-            <h1 className=" text-9xl font-bold">Get in touch</h1>
+            <h1 className="text-center text-9xl font-bold">Get in touch</h1>
           </div>
           <div className="flex flex-col gap-10">
             <div className=" text-center">

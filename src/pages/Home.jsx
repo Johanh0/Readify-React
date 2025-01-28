@@ -31,7 +31,7 @@ const Home = () => {
     <>
       <Header />
       <Main>
-        <section className="flex justify-between items-center gap-5 w-full h-[600px]">
+        <section className="flex flex-col md:flex-row text-center md:text-start justify-between items-center gap-20 md:gap-5 w-full h-fit">
           <div className=" flex-1">
             <h1 className=" text-8xl font-bold">
               Immerse yourself in a world of words.
@@ -47,9 +47,9 @@ const Home = () => {
             <div>
               <h2 className="text-center text-4xl">Best Seller Books</h2>
             </div>
-            <div className="grid grid-cols-4 gap-x-35 gap-y-20">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-25">
               {allEbooks.map((ebook) => (
-                <Link to={`/product/${ebook.ebook_id}`}>
+                <Link key={ebook.ebook_id} to={`/product/${ebook.ebook_id}`}>
                   <ProductCard
                     imgPath={ebook.cover_image_url}
                     key={ebook.ebook_id}

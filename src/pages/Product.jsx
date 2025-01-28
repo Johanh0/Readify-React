@@ -26,7 +26,7 @@ const Product = () => {
     <>
       <Header />
       <Main>
-        <section className="flex items-center justify-between gap-20">
+        <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-20">
           <div>
             <img
               src={`http://localhost:3000/ebook-covers/${product.cover_image_url}`}
@@ -35,7 +35,7 @@ const Product = () => {
               className=" w-100"
             />
           </div>
-          <div className="flex flex-1 flex-col gap-10  ">
+          <div className="flex flex-1 flex-col gap-7 text-center md:text-start md:gap-10  ">
             <h1 className=" text-6xl font-bold max-w-[750px]">
               {product.title}
             </h1>
@@ -44,7 +44,7 @@ const Product = () => {
               <span className=" font-bold">{product.author}</span>
             </p>
             <p className="max-w-[750px] text-lg">{product.description}</p>
-            <div className=" flex items-center gap-20">
+            <div className=" flex items-center justify-center md:justify-start gap-20">
               <p>
                 <span className=" font-bold">Format:</span> {product.format}
               </p>
@@ -55,7 +55,7 @@ const Product = () => {
                 <span className=" font-bold">Language:</span> {product.language}
               </p>
             </div>
-            <div>
+            <div className="flex justify-center md:justify-start">
               <SimpleButton cursorType={"cursor-pointer"}>
                 Buy eBook
               </SimpleButton>
