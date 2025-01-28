@@ -40,7 +40,7 @@ const Header = () => {
             </div>
           ) : (
             <Link to="/auth">
-              <SimpleButton>Sign in</SimpleButton>
+              <SimpleButton cursorType={"cursor-pointer"}>Sign in</SimpleButton>
             </Link>
           )}
         </div>

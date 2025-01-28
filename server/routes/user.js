@@ -29,12 +29,40 @@ userRouter.post("/signup", async (req, res) => {
       "INSERT INTO users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)";
     const values = [first_name, last_name, email, hashedPassword];
 
-    const [results] = await promisePool.execute(query, values);
+    const [result] = await promisePool.execute(query, values);
 
-    res.status(200).json({
-      message: "User created",
-      id: results.id,
-    });
+    // Search in the database the user and login after created the user
+    const query2 = "SELECT * FROM users WHERE email = ?";
+    const [user] = await promisePool.execute(query2, [email]);
+
+    if (!user.length) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Compare passwords
+    const passwordMatch = await bcrypt.compare(password, user[0].password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ message: "Invalid password" });
+    }
+    // Generate JWT token
+    const token = generateToken(user[0].user_id);
+
+    res
+      .cookie("authToken", token, {
+        httpOnly: true,
+        secure: false,
+        sameSite: true,
+        maxAge: 30 * 60 * 1000,
+      })
+      .status(200)
+      .json({
+        message: "Account created successful",
+        first_name: user[0].first_name,
+        last_name: user[0].last_name,
+        email: user[0].email,
+        profile_image_url: user[0].profile_image_url,
+      });
   } catch (error) {
     console.error("Error trying to create the user:", error);
     res.status(500).json({ error: "Error creating the user" });

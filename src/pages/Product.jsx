@@ -56,7 +56,9 @@ const Product = () => {
               </p>
             </div>
             <div>
-              <SimpleButton>Buy eBook</SimpleButton>
+              <SimpleButton cursorType={"cursor-pointer"}>
+                Buy eBook
+              </SimpleButton>
             </div>
           </div>
         </section>

@@ -1,5 +1,5 @@
 // Import React Functionalities
-import { useState, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../App";
@@ -60,7 +60,12 @@ const Profile = () => {
 
             <p className="text-xl mb-5">{user?.email}</p>
             <div className=" max-w-46">
-              <SimpleButton onClick={handleLogout}>Log Out</SimpleButton>
+              <SimpleButton
+                cursorType={"cursor-pointer"}
+                onClick={handleLogout}
+              >
+                Log Out
+              </SimpleButton>
             </div>
           </div>
         </section>

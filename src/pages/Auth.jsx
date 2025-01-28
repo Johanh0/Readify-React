@@ -39,6 +39,14 @@ const Auth = () => {
     setPassword(value);
   };
 
+  const handleChangeOfView = () => {
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPassword("");
+    setSignIn(!signIn);
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -124,6 +132,7 @@ const Auth = () => {
                   placeholder="Enter email"
                   className=" w-full py-2 px-2 bg-gray-100 rounded-sm border border-gray-300 outline-none"
                   onChange={(e) => handleEmail(e.target.value)}
+                  value={email}
                   required
                 />
               </div>
@@ -140,6 +149,7 @@ const Auth = () => {
                   placeholder="Enter password"
                   className=" w-full py-2 px-2 bg-gray-100 rounded-sm border border-gray-300 outline-none"
                   onChange={(e) => handlePassword(e.target.value)}
+                  value={password}
                   required
                 />
               </div>
@@ -160,6 +170,7 @@ const Auth = () => {
                     placeholder="First Name"
                     className=" w-full py-2 px-2 bg-gray-100 rounded-sm border border-gray-300 outline-none"
                     onChange={(e) => handleFirstName(e.target.value)}
+                    value={firstName}
                     required
                   />
                 </div>
@@ -176,6 +187,7 @@ const Auth = () => {
                     placeholder="Last Name"
                     className=" w-full py-2 px-2 bg-gray-100 rounded-sm border border-gray-300 outline-none"
                     onChange={(e) => handleLastName(e.target.value)}
+                    value={lastName}
                     required
                   />
                 </div>
@@ -193,6 +205,7 @@ const Auth = () => {
                   placeholder="Enter email"
                   className=" w-full py-2 px-2 bg-gray-100 rounded-sm border border-gray-300 outline-none"
                   onChange={(e) => handleEmail(e.target.value)}
+                  value={email}
                   required
                 />
               </div>
@@ -209,6 +222,7 @@ const Auth = () => {
                   placeholder="Enter password"
                   className=" w-full py-2 px-2 bg-gray-100 rounded-sm border border-gray-300 outline-none"
                   onChange={(e) => handlePassword(e.target.value)}
+                  value={password}
                   required
                 />
               </div>
@@ -218,7 +232,7 @@ const Auth = () => {
           <div className="flex flex-col gap-3">
             <div>
               <p
-                onClick={() => setSignIn(!signIn)}
+                onClick={() => handleChangeOfView()}
                 className=" text-gray-600 font-bold cursor-pointer"
               >
                 {signIn ? "Create an account" : "Already have an account?"}
