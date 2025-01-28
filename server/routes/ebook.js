@@ -4,12 +4,13 @@ const ebookRouter = express.Router();
 
 ebookRouter.get("/all", async (req, res) => {
   try {
-    const query = "SELECT * FROM ebooks LIMIT 20";
-    const [results] = await promisePool.execute(query);
+    // const query = "SELECT * FROM ebooks LIMIT 20";
+    // const [results] = await promisePool.execute(query);
 
-    res.status(200).json({
-      results,
-    });
+    // res.status(200).json({
+    //   results,
+    // });
+    console.log("HIT");
   } catch (error) {
     console.error("Error trying to access ebooks:", error);
     res.status(500).json({ error: "Error accessing ebooks" });
