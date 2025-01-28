@@ -48,7 +48,7 @@ const Profile = () => {
         <section className="flex justify-center items-center flex-col gap-10 w-full h-100">
           <div>
             <img
-              src={`http://localhost:3000/profile-img/${user?.profile_image_url}`}
+              src={`/profile-img/${user?.profile_image_url}`}
               alt={`${user?.first_name} ${user?.last_name} profile picture`}
               className="w-50 h-50 rounded-full"
             />

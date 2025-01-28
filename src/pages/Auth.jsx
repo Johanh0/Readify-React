@@ -103,7 +103,7 @@ const Auth = () => {
 
       setUser(data);
       setLocalStorage("user", data);
-      navigate("/catalog");
+      navigate("/profile");
     } catch {}
   };
 

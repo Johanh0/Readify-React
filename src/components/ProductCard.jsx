@@ -1,6 +1,4 @@
 // Import React Functionalities
-import { Link } from "react-router-dom";
-import SimpleButton from "./buttons/SimpleButton";
 const ProductCard = ({ imgPath, title, author }) => {
   return (
     <article className=" cursor-pointer">

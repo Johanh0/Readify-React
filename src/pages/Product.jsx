@@ -29,30 +29,32 @@ const Product = () => {
         <section className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-20">
           <div>
             <img
-              src={`http://localhost:3000/ebook-covers/${product.cover_image_url}`}
-              alt={`${product.title} cover ebook imagen`}
+              src={`/ebook-covers/${product?.cover_image_url}`}
+              alt={`${product?.title} cover ebook imagen`}
               loading="lazy"
               className=" w-100"
             />
           </div>
           <div className="flex flex-1 flex-col gap-7 text-center md:text-start md:gap-10  ">
             <h1 className=" text-6xl font-bold max-w-[750px]">
-              {product.title}
+              {product?.title}
             </h1>
             <p className=" text-2xl">
               <span className="italic">By</span>{" "}
-              <span className=" font-bold">{product.author}</span>
+              <span className=" font-bold">{product?.author}</span>
             </p>
-            <p className="max-w-[750px] text-lg">{product.description}</p>
+            <p className="max-w-[750px] text-lg">{product?.description}</p>
             <div className=" flex items-center justify-center md:justify-start gap-20">
               <p>
-                <span className=" font-bold">Format:</span> {product.format}
+                <span className=" font-bold">Format:</span> {product?.format}
               </p>
               <p>
-                <span className=" font-bold">Category:</span> {product.category}
+                <span className=" font-bold">Category:</span>{" "}
+                {product?.category}
               </p>
               <p>
-                <span className=" font-bold">Language:</span> {product.language}
+                <span className=" font-bold">Language:</span>{" "}
+                {product?.language}
               </p>
             </div>
             <div className="flex justify-center md:justify-start">
