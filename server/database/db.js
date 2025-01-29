@@ -11,6 +11,7 @@ const pool = mysql.createPool({
   user: process.env.STACKHERO_MYSQL_DATABASE_USER,
   password: process.env.STACKHERO_MYSQL_ROOT_PASSWORD,
   database: process.env.STACKHERO_MYSQL_DATABASE_URL,
+  port: process.env.STACKHERO_MYSQL_PORT,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
