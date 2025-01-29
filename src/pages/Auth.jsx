@@ -51,7 +51,7 @@ const Auth = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/api/v1/user/login", {
+      const response = await fetch("/api/v1/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -82,7 +82,7 @@ const Auth = () => {
     const first_name = firstName;
     const last_name = lastName;
     try {
-      const response = await fetch("http://localhost:3000/api/v1/user/signup", {
+      const response = await fetch("/api/v1/user/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,13 +1,11 @@
 // Import React Functionalities
 import { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../App";
 // Import Components
 import Header from "../components/Header";
 import Main from "../components/Main";
 import SimpleButton from "../components/buttons/SimpleButton";
-import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
 // Import Utils
 import { removeLocalStorage } from "../utils/localStorage";
@@ -24,7 +22,7 @@ const Profile = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/v1/user/logout", {
+      const response = await fetch("/api/v1/user/logout", {
         method: "POST",
       });
 

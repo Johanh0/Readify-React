@@ -4,7 +4,7 @@ const ProductCard = ({ imgPath, title, author }) => {
     <article className=" cursor-pointer">
       <div>
         <img
-          src={`http://localhost:3000/ebook-covers/${imgPath}`}
+          src={`/ebook-covers/${imgPath}`}
           alt={`${title} cover ebook imagen`}
           loading="lazy"
         />

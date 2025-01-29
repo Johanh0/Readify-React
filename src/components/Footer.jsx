@@ -7,9 +7,6 @@ const Footer = () => {
       <section className="flex flex-col gap-5 max-w-[1600px]">
         <p className=" text-gray-300 text-2xl">Read anytime, anywhere.</p>
         <h3 className=" text-9xl font-bold">Get in Touch!</h3>
-        {/* <Link>
-            <Button>Contact Us</Button>
-          </Link> */}
         <p className=" text-gray-300">&copy; {`${currentYear} Readify`}</p>
       </section>
       <section className="flex justify-between py-10 w-full border-t border-gray-800 text-xl max-w-[1600px]">
