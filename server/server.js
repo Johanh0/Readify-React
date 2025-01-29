@@ -12,14 +12,9 @@ const API_VERSION = "/api/v1";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const corsOptions = {
-  origin: "https://readify-app-f78abbe1f69f.herokuapp.com/",
-  credentials: true,
-};
-
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.static(path.join(__dirname, "../dist")));
 
