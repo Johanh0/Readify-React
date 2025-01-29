@@ -61,7 +61,6 @@ const Contact = () => {
                       id="contact-firstName"
                       type="text"
                       className=" w-full py-2 px-2 bg-gray-100 rounded-sm border border-gray-300 outline-none"
-                      // onChange={(e) => handleFirstName(e.target.value)}
                       value={firstName}
                       onChange={(e) =>
                         handleCheckInput(e.target.value, setFirstName)
@@ -80,7 +79,6 @@ const Contact = () => {
                       id="contact-lastName"
                       type="text"
                       className=" w-full py-2 px-2 bg-gray-100 rounded-sm border border-gray-300 outline-none"
-                      // onChange={(e) => handleLastName(e.target.value)}
                       value={lastName}
                       onChange={(e) =>
                         handleCheckInput(e.target.value, setLastName)
