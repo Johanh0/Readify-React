@@ -11,7 +11,7 @@ const pool = mysql.createPool({
   user: "root",
   password: "HFZ1afleytcpHCADUf21GSsODcJNWZ2V",
   database:
-    "mysql://root:HFZ1afleytcpHCADUf21GSsODcJNWZ2V@yndj7t.stackhero-network.com:5873/root?",
+    "mysql://root:HFZ1afleytcpHCADUf21GSsODcJNWZ2V@yndj7t.stackhero-network.com:5873/root?useSSL=true&requireSSL=false",
   port: "5873",
   waitForConnections: true,
   connectionLimit: 10,
