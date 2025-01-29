@@ -7,12 +7,11 @@ dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 
 // Pool of connections
 const pool = mysql.createPool({
-  host: "yndj7t.stackhero-network.com",
-  user: "root",
-  password: "HFZ1afleytcpHCADUf21GSsODcJNWZ2V",
-  database:
-    "mysql://root:HFZ1afleytcpHCADUf21GSsODcJNWZ2V@yndj7t.stackhero-network.com:5873/root?useSSL=true&requireSSL=true",
-  port: 5873,
+  host: process.env.STACKHERO_MYSQL_HOST,
+  user: process.env.STACKHERO_MYSQL_DATABASE_USER,
+  password: process.env.STACKHERO_MYSQL_ROOT_PASSWORD,
+  database: process.env.STACKHERO_MYSQL_DATABASE_URL,
+  port: process.env.STACKHERO_MYSQL_PORT,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
