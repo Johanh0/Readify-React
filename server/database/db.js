@@ -2,16 +2,17 @@ import mysql from "mysql2";
 import path from "path";
 import dotenv from "dotenv";
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
-dotenv.config({ path: path.resolve(__dirname, "../../.env") });
+// const __dirname = path.dirname(new URL(import.meta.url).pathname);
+// dotenv.config({ path: path.resolve(__dirname, "../../.env") });
 
 // Pool of connections
 const pool = mysql.createPool({
-  host: process.env.STACKHERO_MYSQL_HOST,
-  user: process.env.STACKHERO_MYSQL_DATABASE_USER,
-  password: process.env.STACKHERO_MYSQL_ROOT_PASSWORD,
-  database: process.env.STACKHERO_MYSQL_DATABASE_URL,
-  port: process.env.STACKHERO_MYSQL_PORT,
+  host: "yndj7t.stackhero-network.com",
+  user: "root",
+  password: "HFZ1afleytcpHCADUf21GSsODcJNWZ2V",
+  database:
+    "mysql://root:HFZ1afleytcpHCADUf21GSsODcJNWZ2V@yndj7t.stackhero-network.com:5873/root?useSSL=true&requireSSL=true",
+  port: 5873,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
