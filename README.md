@@ -12,6 +12,10 @@ Key features include an interactive product catalog, secure form handling, and a
 - **Intuitive Interface**: The website is designed with a simple, clean layout that makes it easy for users to browse and purchase books.
 - **User functionality**: The website allows create a user.
 
+### Screen Shot
+
+![](./public/project.png)
+
 ### Technologies
 
 - **React**: The structure of the e-commerce site is built using React.
@@ -26,10 +30,6 @@ Key features include an interactive product catalog, secure form handling, and a
 To try out the live version of the project, click the following link:
 
 [Live Demo](https://main.d1rmepzuj16x1r.amplifyapp.com/)
-
-## Author
-
-- [@Johanh0](https://www.github.com/johanh0)
 
 ### Prerequisites
 
@@ -59,7 +59,12 @@ Install Readify-React with npm
 
 ```bash
   node server.js
+
 ```
+
+## Author
+
+- [@Johanh0](https://www.github.com/johanh0)
 
 ## Support or Contact
 
