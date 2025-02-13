@@ -21,6 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../dist")));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "http://localhost:5173");
@@ -38,6 +39,10 @@ import { ebookRouter } from "./routes/ebook.js";
 
 app.use(`${API_VERSION}/user`, userRouter);
 app.use(`${API_VERSION}/ebook`, ebookRouter);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join("../dist/index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`PORT is listening on ${PORT}`);
