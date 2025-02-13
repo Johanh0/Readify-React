@@ -39,7 +39,11 @@ app.use(`${API_VERSION}/user`, userRouter);
 app.use(`${API_VERSION}/ebook`, ebookRouter);
 
 app.get("*", (req, res) => {
+<<<<<<< HEAD
   res.sendFile(path.join(__dirname, "../dist/index.html"));
+=======
+  res.sendFile(path.join("../dist/index.html"));
+>>>>>>> develop
 });
 
 app.listen(PORT, () => {
