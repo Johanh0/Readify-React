@@ -2,8 +2,6 @@
 
 This project is an **e-commerce platform** designed to sell **eBooks**. It allows users to browse and purchase various eBooks, offering an intuitive and user-friendly interface. Built with **React**, **Tailwind**, **JavaScript**, **Node.js**, **MySQL** and **Vite**, the platform offers a seamless shopping experience with full responsiveness across devices.
 
-Key features include an interactive product catalog, secure form handling, and an easy-to-navigate interface. The platform also includes basic error handling in forms to ensure a smooth user experience when submitting information.
-
 ### Key Features
 
 - **eBook Catalog**: The website allows users to view and purchase a variety of eBooks, each with detailed descriptions, pricing, and author information.
